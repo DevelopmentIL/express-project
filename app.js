@@ -34,7 +34,7 @@ app.use(logger(config.logger.format, config.logger));
 
 // domain redirection
 app.use(function(req, res, next) {
-	if(req.host === config.domain)
+	if(req.hostname === config.domain)
 		return next();
 	
 	res.redirect(req.protocol + '://' + config.domain + req.originalUrl);
