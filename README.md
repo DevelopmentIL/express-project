@@ -22,28 +22,29 @@ Go to [http://localhost/](http://localhost/) to see your project!
 ├── bin
 │   └── www
 ├── config
-│   └── default.js
-│   └── development.js
+│   ├── default.js
+│   ├── development.js
 │   └── production.js
 ├── logs
 ├── package.json
 ├── public
-│   └── files
+│   ├── files
 │   └── static
-│       └── css
-│           └── style.css
+│       ├── css
+│       │   └── style.css
 │       ├── images
 │       ├── js
 │       └── libs
 │           └── bootstrap-3.3
 │               └── ...
 ├── routes
-│   ├── index.js
+│   └── index.js
 └── views
-    ├── error.jade
-    └── html.jade
-    ├── index.jade
-    └── layout.jade
+│   ├── error.jade
+│   ├── html.jade
+│   ├── index
+│   │   └── index.jade
+│   └── layout.jade
 └── tmp
 ```
 
