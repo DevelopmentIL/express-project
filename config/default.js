@@ -22,7 +22,7 @@ module.exports = {
 		}
 	},
 	
-	mailerConfig: {
+	mailer: {
 		from: 'hello@example.com',
 				
 		host: 'smtp.example.com', // hostname

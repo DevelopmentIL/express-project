@@ -9,11 +9,14 @@ var bodyParser = require('body-parser');
 //var expressValidator = require('express-validator');
 //var session = require('express-session');
 //var MongoStore = require('connect-mongo')(session);
+//var mailer = require('express-mailer');
 
 var app = express();
 var config = require('./config/' + app.get('env'));
 
 //mongoose.connect(config.mongodb);
+
+//mailer.extend(app, config.mailer);
 
 // Add all your routers names here:
 var routes = [
