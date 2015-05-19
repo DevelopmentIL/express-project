@@ -44,6 +44,7 @@ Go to [http://localhost/](http://localhost/) to see your project!
     └── html.jade
     ├── index.jade
     └── layout.jade
+└── tmp
 ```
 
 
