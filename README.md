@@ -57,4 +57,4 @@ Each environment has different configuration file.
 
 **express-project** is freely distributable under the terms of the [MIT license](LICENSE).
 
-Copyright (c) 2015 Moshe Simantov
+Copyright (c) 2015 [Moshe Simantov](https://github.com/moshest)
