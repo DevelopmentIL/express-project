@@ -14,6 +14,7 @@ module.exports = {
 	session: {
 //		name: 'connect.sid',
 		saveUninitialized: false,
+		resave: false,
 		storeOptions: {
 //			collection: 'sessions',
 //			ttl: 14 * 24 * 3600, // 14 days
