@@ -21,15 +21,22 @@ Go to [http://localhost/](http://localhost/) to see your project!
 ├── app.js
 ├── bin
 │   └── www
+├── config
+│   └── default.js
+│   └── development.js
+│   └── production.js
+├── logs
 ├── package.json
 ├── public
-│   └── css
-│       └── style.css
-│   ├── images
-│   ├── js
-│   └── libs
-│       └── bootstrap-3.3
-│           └── ...
+│   └── files
+│   └── static
+│       └── css
+│           └── style.css
+│       ├── images
+│       ├── js
+│       └── libs
+│           └── bootstrap-3.3
+│               └── ...
 ├── routes
 │   ├── index.js
 └── views
