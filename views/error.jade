@@ -1,0 +1,23 @@
+extends layout
+
+block title
+	| Error!
+
+block main
+	#main
+		.container
+			h1 An Error Occurred
+			p Our technical support team will solve the problem as soon as possible.
+
+			pre
+				= method + ' ' + url
+				br
+				= status + ' ' + message
+
+				if error.stack
+					br
+					br
+					= error.stack
+
+			br
+			button.btn.btn-default(type='button', onclick='window.history.back()') &larr; Go Back
