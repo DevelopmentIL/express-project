@@ -34,10 +34,10 @@ app.use(logger(config.logger.format, config.logger));
 
 // domain redirection
 app.use(function(req, res, next) {
-	if(req.host === config.local.domain)
+	if(req.host === config.domain)
 		return next();
 	
-	res.redirect(req.protocol + '://' + config.local.domain + req.originalUrl);
+	res.redirect(req.protocol + '://' + config.domain + req.originalUrl);
 });
 
 app.use(bodyParser.json());
