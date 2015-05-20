@@ -14,6 +14,8 @@ var bodyParser = require('body-parser');
 
 var app = module.exports = express();
 var config = require('./config/' + app.get('env'));
+var validators = require('./helpers/validators');
+var locals = require('./helpers/locals');
 
 //mongoose.connect(config.mongodb);
 
@@ -62,6 +64,7 @@ var routes = [
 
 app.set('config', config);
 app.locals.siteName = config.name;
+app.locals.helpers = locals;
 
 //app.enable('trust proxy');
 //app.disable('x-powered-by');
@@ -89,7 +92,9 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(expressValidator());
+//app.use(expressValidator({
+//	customValidators: validators
+//}));
 
 app.use(cookieParser(config.secret, config.cookie));
 //app.use(session(_.extend({
