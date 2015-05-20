@@ -1,6 +1,6 @@
 var _ = require('underscore');
 var mailer = require('express-mailer');
-var registry = require('registry');
+var registry = require('../registry');
 
 mailer.extend(registry.app, registry.config.mailer);
 	
