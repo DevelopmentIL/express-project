@@ -5,8 +5,8 @@
  */
 
 var app = require('../app');
+var logger = require('winston');
 var config = app.get('config');
-var debug = require('debug')('app:server');
 var http = require('http');
 
 /**
@@ -87,5 +87,6 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+
+  logger.debug('Listening on ' + bind);
 }
