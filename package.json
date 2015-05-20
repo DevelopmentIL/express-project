@@ -13,12 +13,12 @@
     "express": "~4.12.2",
     "express-session": "^1.11.2",
     "express-validator": "^2.10.0",
-    "file-stream-rotator": "~0.0.6",
+    "express-winston": "^0.3.1",
     "jade": "^1.9.2",
     "mailer": "^0.6.7",
     "mongoose": "^4.0.3",
-    "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "winston": "^1.0.0"
   }
 }

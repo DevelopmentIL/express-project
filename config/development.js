@@ -9,7 +9,10 @@ module.exports = _.extend({}, config, {
 	
 //	mongodb: 'mongodb://localhost/my_project',
 
-	logger: {
-		format: 'dev'
-	}
+	logger: _.extend({}, config.logger, {
+		console: {
+			level: 'debug'
+		},
+		access: false
+	})
 });

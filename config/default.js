@@ -35,5 +35,15 @@ module.exports = {
 			user: 'demo',
 			pass: '123456'
 		}
+	},
+	
+	logger: {
+		console: false,
+		access: {
+			filename: './logs/access.log'
+		},
+		error: {
+			filename: './logs/error.log'
+		}
 	}
 };
