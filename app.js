@@ -2,7 +2,6 @@ var _ = require('underscore');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var winston = require('winston');
 var expressWinston  = require('express-winston');
 //var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
@@ -12,51 +11,27 @@ var bodyParser = require('body-parser');
 //var MongoStore = require('connect-mongo')(session);
 //var mailer = require('express-mailer');
 
-var app = module.exports = express();
-var config = require('./config/' + app.get('env'));
-var validators = require('./helpers/validators');
-var locals = require('./helpers/locals');
+
+var registry = require('./registry');
+
+var app = 
+registry.app = express();
+
+var config = 
+registry.config = require('./config/' + app.get('env'));
+
+var logger = 
+registry.logger = require('./helpers/logger');
+
+app.locals.siteName = config.name;
+app.locals.helpers = registry.locals;
+
+
 
 //mongoose.connect(config.mongodb);
 
+
 //mailer.extend(app, config.mailer);
-
-
-// Winston logger
-winston.remove(winston.transports.Console);
-winston.exitOnError = function(err) {
-	return (err.code !== 'EPIPE');
-};
-app.set('logger', winston);
-app.logger = winston;
-
-if(config.logger.console) {
-	winston.add(winston.transports.Console, _.extend({
-		colorize: true,
-		prettyPrint: true,
-		depth: 20,
-		handleExceptions: true
-	}, config.logger.console));
-}
-
-if(config.logger.access) {
-	winston.add(winston.transports.DailyRotateFile, _.extend({
-		name: 'access-file',
-		handleExceptions: true,
-		maxsize: 10 * 1024 * 1024,
-		maxFiles: 14
-	}, config.logger.access));
-}
-
-if(config.logger.error) {
-	winston.add(winston.transports.DailyRotateFile, _.extend({
-		name: 'error-file',
-		level: 'warn',
-		handleExceptions: true,
-		maxsize: 10 * 1024 * 1024,
-		maxFiles: 14
-	}, config.logger.error));
-}
 
 
 // Add all your routers names here:
@@ -64,22 +39,19 @@ var routes = [
 	'index'
 ];
 
-app.set('config', config);
-app.locals.siteName = config.name;
-app.locals.helpers = locals;
-
-//app.enable('trust proxy');
-//app.disable('x-powered-by');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+//app.enable('trust proxy');
+//app.disable('x-powered-by');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use(expressWinston.logger({
-	winstonInstance: winston,
+	winstonInstance: logger,
 	meta: false,
 	expressFormat: true
 }));
@@ -95,7 +67,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(expressValidator({
-//	customValidators: validators
+//	customValidators: registry.validators
 //}));
 
 app.use(cookieParser(config.secret, config.cookie));
@@ -123,7 +95,7 @@ routes.forEach(function(route) {
 // error handlers
 
 app.use(expressWinston.errorLogger({
-	winstonInstance: winston
+	winstonInstance: logger
 }));
 
 // catch 404 and forward to error handler
@@ -146,3 +118,5 @@ app.use(function(err, req, res, next) {
 		error: (app.get('env') === 'development') ? err : {}
 	});
 });
+
+module.exports = app;

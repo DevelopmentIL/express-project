@@ -5,8 +5,9 @@
  */
 
 var app = require('../app');
-var logger = require('winston');
-var config = app.get('config');
+var registry = require('../registry');
+var config = registry.config;
+var logger = registry.logger;
 var http = require('http');
 
 /**
