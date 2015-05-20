@@ -7,9 +7,9 @@ html
 
 		block seo
 		if headTitle
-			title= siteName + ' - ' + headTitle
+			title= config.name + ' - ' + headTitle
 		block og
-			meta(property='og:site_name', content=siteName)
+			meta(property='og:site_name', content=config.name)
 
 		block head
 			link(rel='stylesheet', type='text/css', href='/static/libs/bootstrap-3.3/css/bootstrap.min.css')

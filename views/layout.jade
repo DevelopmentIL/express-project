@@ -13,7 +13,7 @@ block body
 					span.icon-bar
 					span.icon-bar
 
-				a.navbar-brand(href='/')= siteName
+				a.navbar-brand(href='/')= config.name
 
 			#header-nav.collapse.navbar-collapse
 				- var headerNavClass = {}
@@ -32,4 +32,4 @@ block body
 
 	footer#footer
 		.container
-			p #{siteName} &copy; 2015
+			p #{config.name} &copy; 2015

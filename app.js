@@ -9,7 +9,6 @@ var bodyParser = require('body-parser');
 //var expressValidator = require('express-validator');
 //var session = require('express-session');
 //var MongoStore = require('connect-mongo')(session);
-//var mailer = require('express-mailer');
 //var cacheManager = require('cache-manager');
 
 
@@ -28,12 +27,12 @@ registry.logger = require('./helpers/logger');
 //registry.cache = cacheManager.caching(config.cache);
 
 //var mailer = 
-//registry.mailer = mailer.extend(app, config.mailer);
+//registry.mailer = require('./helpers/mailer');
 
 
 //mongoose.connect(config.mongodb);
 
-app.locals.siteName = config.name;
+app.locals.config = config;
 app.locals.helpers = registry.locals;
 
 
