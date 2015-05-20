@@ -27,15 +27,14 @@ registry.logger = require('./helpers/logger');
 //var cache = 
 //registry.cache = cacheManager.caching(config.cache);
 
-app.locals.siteName = config.name;
-app.locals.helpers = registry.locals;
-
+//var mailer = 
+//registry.mailer = mailer.extend(app, config.mailer);
 
 
 //mongoose.connect(config.mongodb);
 
-
-//mailer.extend(app, config.mailer);
+app.locals.siteName = config.name;
+app.locals.helpers = registry.locals;
 
 
 // Add all your routers names here:
