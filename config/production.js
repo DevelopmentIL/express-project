@@ -6,14 +6,5 @@ module.exports = _.extend({}, config, {
 
 	static: {
 		maxAge: 24 * 3600 * 1000
-	},
-
-	logger: {
-		format: 'combined',
-		stream: FileStreamRotator.getStream({
-			filename: './logs/access-%DATE%.log',
-			frequency: 'daily',
-			verbose: false
-		})
 	}
 });
