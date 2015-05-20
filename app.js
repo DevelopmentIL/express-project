@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 //var session = require('express-session');
 //var MongoStore = require('connect-mongo')(session);
 //var mailer = require('express-mailer');
+//var cacheManager = require('cache-manager');
 
 
 var registry = require('./registry');
@@ -22,6 +23,9 @@ registry.config = require('./config/' + app.get('env'));
 
 var logger = 
 registry.logger = require('./helpers/logger');
+
+//var cache = 
+//registry.cache = cacheManager.caching(config.cache);
 
 app.locals.siteName = config.name;
 app.locals.helpers = registry.locals;

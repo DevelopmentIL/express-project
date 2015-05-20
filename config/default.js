@@ -22,6 +22,12 @@ module.exports = {
 		}
 	},
 	
+	cache: {
+		store: 'memory',
+		max: 100,
+		ttl: 600 // seconds
+	},
+	
 	mailer: {
 		from: 'hello@example.com',
 				
