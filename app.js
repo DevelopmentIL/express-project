@@ -27,6 +27,8 @@ winston.remove(winston.transports.Console);
 winston.exitOnError = function(err) {
 	return (err.code !== 'EPIPE');
 };
+app.set('logger', winston);
+app.logger = winston;
 
 if(config.logger.console) {
 	winston.add(winston.transports.Console, _.extend({
