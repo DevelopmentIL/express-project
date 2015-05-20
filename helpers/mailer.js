@@ -4,19 +4,23 @@ var registry = require('../registry');
 
 mailer.extend(registry.app, registry.config.mailer);
 	
-exports.send = function(view, data, callback) {
+exports.send = function(sendOptions, data, callback) {
 	data = _.extend({
 		config: registry.config,
 		prefix: 'http://' + registry.config.domain
 	}, data);
 	
-	var sendOptions = {
-		template: view
-	};
-	if(data.from) {
-		sendOptions.from = data.from;
-		sendOptions.replyTo = data.replyTo;
+	if(typeof sendOptions === 'string') {
+		sendOptions = {
+			template: sendOptions
+		};
 	}
+	
+	if(data.from)
+		sendOptions.from = data.from;
+	
+	if(data.replyTo)
+		sendOptions.replyTo = data.replyTo;
 	
 	if(!callback) {
 		callback = function(err) {
